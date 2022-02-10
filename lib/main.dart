@@ -1,23 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:teste03/Widgets/home_widget.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'Widgets/home_widget.dart';
+import 'Provider Repositories/page_controller.dart';
+import 'Provider Repositories/screen_controller.dart';
+import 'Provider Repositories/favoritos_controller.dart';
+import 'Provider Repositories/personagens_controller.dart';
+import 'Provider Repositories/filmes_controller.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MyApp(),
+      ),
+    );
 
+// ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Teste Escribo 03',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (ctx) => GerenciamentodePaginas()),
+        ChangeNotifierProvider(create: (ctx) => GerenciamentodeTelas()),
+        ChangeNotifierProvider(create: (ctx) => GerenciamentodePersonagens()),
+        ChangeNotifierProvider(create: (ctx) => GerenciamentodeFilmes()),
+        ChangeNotifierProvider(create: (ctx) => GerenciamentodeFavoritos()),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: const Color.fromARGB(255, 255, 255, 255),
+          brightness: Brightness.dark,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const Home(),
       ),
-      home: const HomeWidget(),
     );
   }
 }

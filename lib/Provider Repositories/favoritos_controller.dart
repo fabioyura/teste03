@@ -19,8 +19,6 @@ class GerenciamentodeFavoritos with ChangeNotifier {
   }
 
   void setremoveListfavoritos(Favoritos value) {
-    final rt =
-        listaFavoritos.removeWhere((element) => element.name == value.name);
     deletar(value);
     notifyListeners();
   }
@@ -43,7 +41,7 @@ class GerenciamentodeFavoritos with ChangeNotifier {
     final gt = await favoritosDatabase.getFavoritos();
     listaFavoritos.clear();
 
-    gt.forEach((element) {
+    for (var element in gt) {
       listaFavoritos.add(
         Favoritos(
           id: element[DatabaseFavoritos.columnId],
@@ -51,6 +49,6 @@ class GerenciamentodeFavoritos with ChangeNotifier {
           type: element[DatabaseFavoritos.columnType],
         ),
       );
-    });
+    }
   }
 }

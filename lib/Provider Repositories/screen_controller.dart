@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:teste03/Widgets/body_widget.dart';
 
 class GerenciamentodeTelas with ChangeNotifier {
   bool siteoficialaberto = false;
 
   bool editaravataraberto = false;
 
-  Widget tela = Expanded(
-    child: ScreenWidget(),
+  Widget tela = const Expanded(
+    child: BodyApp(),
   );
 
   Widget get gettela {
