@@ -1,4 +1,4 @@
-# Seleção de Desenvolvedor de Software - Escribo
+# Seleção de Desenvolvedor de Software - Escribo #
 
 **Teste Técnico 03** 
 
@@ -9,13 +9,13 @@
 
 
 
-##Clone este repositório
+##Clone este repositório##
 fabioyura/teste03 (github.com)
 
-##Entrar na pasta Teste03
+##Entrar na pasta Teste03##
 cd teste03
 
-##Executar a aplicação
+##Executar a aplicação##
 dart.\main.dart
 
 
